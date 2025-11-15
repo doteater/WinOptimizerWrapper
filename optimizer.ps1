@@ -3,7 +3,7 @@ $DebugPreference = 'Continue'
 
 
 $tempFile = [System.IO.Path]::GetTempFileName() + '.ps1'
-Invoke-WebRequest -Uri 'https://gist.github.com/doteater/b47b3f540e6802563810fbb43b06d6f0/raw/8aa0c1cbca3a2992ce8f541e513795043a44e79e/gistfile1.txt' -OutFile $tempFile
+Invoke-WebRequest -Uri 'https://github.com/doteater/WinOptimizerWrapper/blob/main/optimizer.ps1' -OutFile $tempFile
 
 # Self-Elevation Function
 Function Elevate-Script {
