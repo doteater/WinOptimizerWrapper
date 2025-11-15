@@ -3,7 +3,7 @@ $DebugPreference = 'Continue'
 
 
 $tempFile = [System.IO.Path]::GetTempFileName() + '.ps1'
-Invoke-WebRequest -Uri 'https://github.com/doteater/WinOptimizerWrapper/blob/main/optimizer.ps1' -OutFile $tempFile
+Invoke-WebRequest -Uri 'https://gist.githubusercontent.com/doteater/7553d248a7572caa65b67ce678c0ae34/raw/807fb6cc06939903c160ee45633213480dd34b16/gistfile1.txt' -OutFile $tempFile
 
 # Self-Elevation Function
 Function Elevate-Script {
@@ -180,9 +180,10 @@ $jsonContent = @'
 # Write JSON to file (force overwrite)
 $jsonContent | Set-Content -Path $jsonPath -Force -Encoding UTF8
 
-# Download executable (force overwrite)
+# Download executable
+remove-item -force -ErrorAction SilentlyContinue $exePath
 $downloadUrl = "https://github.com/hellzerg/optimizer/releases/download/16.7/Optimizer-16.7.exe"
-Invoke-WebRequest -Uri $downloadUrl -OutFile $exePath -Force
+Invoke-WebRequest -Uri $downloadUrl -OutFile $exePath 
 
 # Run executable with config
 & $exePath "/config:$jsonPath"
